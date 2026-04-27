@@ -25,11 +25,6 @@ El jugador debe seleccionar un pokemon de su equipo para que se enfrente a un po
 - Pillow (para el manejo de imágenes)
 - JSON (para guardar los mejores puntajes)
 
-# Cómo Ejecutar el Proyecto
-
-1. Clonar el repositorio:
-   ```bash
-   git clone https://github.com/gerald16cn-creator/poketec.git
 
 
 # Autor
