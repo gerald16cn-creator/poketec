@@ -1,0 +1,52 @@
+[
+    {
+        "nombre": "prueba",
+        "puntaje": 9,
+        "avatar": "Imagenes/avatares/avatar3.png"
+    },
+    {
+        "nombre": "prueba 2",
+        "puntaje": 8,
+        "avatar": "Imagenes/avatares/avatar4.png"
+    },
+    {
+        "nombre": "prueba 10",
+        "puntaje": 8,
+        "avatar": "Imagenes/avatares/avatar5.png"
+    },
+    {
+        "nombre": "gerald",
+        "puntaje": 7,
+        "avatar": "Imagenes/avatares/avatar5.png"
+    },
+    {
+        "nombre": "gogooogg",
+        "puntaje": 7,
+        "avatar": "Imagenes/avatares/avatar2.png"
+    },
+    {
+        "nombre": "hhhh",
+        "puntaje": 6,
+        "avatar": "Imagenes/avatares/avatar4.png"
+    },
+    {
+        "nombre": "paimon",
+        "puntaje": 6,
+        "avatar": "Imagenes/avatares/avatar3.png"
+    },
+    {
+        "nombre": "prueba 3",
+        "puntaje": 6,
+        "avatar": "Imagenes/avatares/avatar2.png"
+    },
+    {
+        "nombre": "prueba 4",
+        "puntaje": 6,
+        "avatar": "Imagenes/avatares/avatar2.png"
+    },
+    {
+        "nombre": "777",
+        "puntaje": 6,
+        "avatar": "Imagenes/avatares/avatar4.png"
+    }
+]
