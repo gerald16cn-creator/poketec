@@ -6,11 +6,11 @@ from logica_juego.juego import juego
 import random
 
 
-# 🟢 1. Pantalla de inicio (nombre + avatar)
+#Pantalla de inicio (nombre + avatar)
 inicio = PantallaInicio()
 nombre, avatar = inicio.iniciar()
 
-# 🔴 Validación (evita crasheos si cierran ventana)
+# validacion 
 if not nombre or not avatar:
     print("Inicio cancelado")
     exit()
@@ -20,16 +20,16 @@ jugador = Entrenador(nombre, avatar)
 cpu = Entrenador("CPU", "Imagenes/avatares/avatar1.png")
 
 
-# 🟡 2. Selección de Pokémon (3)
+# selecciona 3 pokemones
 seleccion = VentanaSeleccion(jugador)
 pokemones_elegidos = seleccion.obtener_seleccion()
 
-# 🔴 Validación importante
+#validacion importante
 if not pokemones_elegidos or len(pokemones_elegidos) != 3:
     print("Selección inválida")
     exit()
 
-# agregar Pokémon al jugador
+# agregar pokemons a la lista del jugador
 for p in pokemones_elegidos:
     jugador.agregar_pokemon(p)
 
@@ -40,12 +40,12 @@ pokemones_jugador = jugador.pokemons
 # filtrar disponibles para CPU
 disponibles_cpu = [p for p in POKEMONS_DISPONIBLES if p not in pokemones_jugador]
 
-# elegir 3 sin repetir
+# cpu elije tres pokemons
 cpu_pokemones = random.sample(disponibles_cpu, 3)
 
 for p in cpu_pokemones:
     cpu.agregar_pokemon(p)
 
 
-# 🔴 4. Iniciar juego
+# iniciar juego
 juego(jugador, cpu)

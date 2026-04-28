@@ -10,12 +10,12 @@ class PantallaBatalla:
 
         self.ganador = None
         self.perdedor = None
-        self.combate_terminado = False  # 🔥 control de estado
+        self.combate_terminado = False  #control de estado del combate
 
         self.ventana = tk.Tk()
         self.ventana.title("Batalla Pokémon")
 
-        # 🧱 FRAME SUPERIOR (avatares + info)
+        #(avatares + info)
         frame_superior = tk.Frame(self.ventana)
         frame_superior.pack(pady=10)
 
@@ -33,7 +33,7 @@ class PantallaBatalla:
         self.label_puntos_jugador = tk.Label(frame_jugador, text=f"Puntos: {jugador.puntaje}")
         self.label_puntos_jugador.pack()
 
-        # 🤖 CPU
+        #CPU
         frame_cpu = tk.Frame(frame_superior)
         frame_cpu.pack(side="right", padx=20)
 
@@ -47,11 +47,11 @@ class PantallaBatalla:
         self.label_puntos_cpu = tk.Label(frame_cpu, text=f"Puntos: {cpu.puntaje}")
         self.label_puntos_cpu.pack()
 
-        # 🐉 FRAME DE COMBATE
+        
         frame_combate = tk.Frame(self.ventana)
         frame_combate.pack(pady=20)
 
-        # 🧑 Pokémon jugador
+        #pokemon del jugador
         self.img_pj = tk.PhotoImage(file=p_jugador.imagen).subsample(2, 2)
 
         frame_pj = tk.Frame(frame_combate)
@@ -63,10 +63,10 @@ class PantallaBatalla:
 
         tk.Label(frame_pj, text=p_jugador.nombre).pack()
 
-        # VS
+        # texto "vs"
         tk.Label(frame_combate, text="VS", font=("Arial", 16)).pack(side="left", padx=10)
 
-        # 🤖 Pokémon CPU
+        #pokemon de la CPU
         self.img_pc = tk.PhotoImage(file=p_cpu.imagen).subsample(2, 2)
 
         frame_pc = tk.Frame(frame_combate)
@@ -78,18 +78,18 @@ class PantallaBatalla:
 
         tk.Label(frame_pc, text=p_cpu.nombre).pack()
 
-        # ❤️ VIDA
+        #hp
         self.vida_jugador = tk.Label(self.ventana)
         self.vida_jugador.pack()
 
         self.vida_cpu = tk.Label(self.ventana)
         self.vida_cpu.pack()
 
-        # 📢 RESULTADO
+        
         self.label_resultado = tk.Label(self.ventana, text="")
         self.label_resultado.pack()
 
-        # ⚔️ BOTÓN
+        #boton atacar
         self.boton_atacar = tk.Button(self.ventana, text="Atacar", command=self.atacar)
         self.boton_atacar.pack(pady=10)
 
@@ -127,11 +127,11 @@ class PantallaBatalla:
 
         self.actualizar_vida()
 
-        # 🔥 BLOQUE FINAL SEGURO
+        # el combate sigue?
         if self.p_jugador.esta_derrotado() or self.p_cpu.esta_derrotado():
 
             if self.combate_terminado:
-                return  # 🔒 doble protección
+                return  # el combate sigue?
 
             self.combate_terminado = True
 

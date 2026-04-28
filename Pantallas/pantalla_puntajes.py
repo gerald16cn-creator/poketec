@@ -8,7 +8,7 @@ class PantallaPuntajes:
         self.ventana.title("Mejores Puntajes")
         self.ventana.geometry("1000x300")  # opcional, para que quepa todo
 
-        tk.Label(self.ventana, text="🏆 TOP 10 🏆", font=("Arial", 16)).pack(pady=10)
+        tk.Label(self.ventana, text=" TOP 10 ", font=("Arial", 16)).pack(pady=10)
 
         # contenedor principal para la fila horizontal
         contenedor = tk.Frame(self.ventana)
@@ -22,7 +22,7 @@ class PantallaPuntajes:
             frame = tk.Frame(contenedor)
             frame.grid(row=0, column=i, padx=10, pady=10)
 
-            # 🖼️ avatar
+            # avatar
             try:
                 img = tk.PhotoImage(file=p["avatar"]).subsample(4, 4)
                 label_img = tk.Label(frame, image=img)
@@ -31,7 +31,7 @@ class PantallaPuntajes:
             except:
                 print(f"Error cargando avatar: {p['avatar']}")
 
-            # 📝 nombre + puntaje
+            # nombre y puntaje
             texto = f"{i+1}. {p['nombre']}\n{p['puntaje']} pts"
             tk.Label(frame, text=texto, font=("Arial", 10)).pack()
 

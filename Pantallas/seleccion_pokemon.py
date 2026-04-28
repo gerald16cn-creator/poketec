@@ -6,7 +6,7 @@ class VentanaSeleccion:
     def __init__(self, entrenador):
         self.entrenador = entrenador
 
-        # ✅ lista de seleccionados
+        #lista de seleccionados
         self.pokemones_seleccionados = []
 
         self.ventana = tk.Tk()
@@ -17,7 +17,7 @@ class VentanaSeleccion:
 
         self.mostrar_pokemones()
 
-        # botón confirmar
+        # boton confirmar
         self.boton_confirmar = tk.Button(
             self.ventana,
             text="Confirmar",

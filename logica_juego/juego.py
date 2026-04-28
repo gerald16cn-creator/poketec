@@ -5,62 +5,48 @@ from Pantallas.selector_combate import SelectorCombate
 from logica_juego.combate import transferir_pokemon
 
 
-# 🤖 CPU elige Pokémon random
-def elegir_pokemon_cpu(entrenador):
+
+def elegir_pokemon_cpu(entrenador):                     #llama a otra función para elegir entre los pokemon de la CPU
     return entrenador.obtener_pokemon_vivo_random()
 
 
-# 🧑 JUGADOR elige Pokémon en pantalla
-def elegir_pokemon_jugador(entrenador):
+def elegir_pokemon_jugador(entrenador):        #Crea una ventana (SelectorCombate) para que el jugador seleccione y devuelve el Pokémon elegido. 
     selector = SelectorCombate(entrenador)
     return selector.obtener()
 
 
 def juego(jugador, cpu):
 
-    while jugador.tiene_pokemon_vivos() and cpu.tiene_pokemon_vivos():
+    while jugador.tiene_pokemon_vivos() and cpu.tiene_pokemon_vivos():  #Mientras ambos entrenadores tengan al menos un pokemon disponible el bucle continua
 
-        print("\n========================")
-        print(f"{jugador.nombre}: {len(jugador.pokemons)} Pokémon")
-        print(f"CPU: {len(cpu.pokemons)} Pokémon")
-        print("========================")
 
-        # 🧑 elegir Pokémon
-        p_jugador = elegir_pokemon_jugador(jugador)
-        if p_jugador is None:
-            continue  # seguridad
+        p_jugador = elegir_pokemon_jugador(jugador)         #El jugador selecciona un pokemon
+        if p_jugador is None:               #si no selecciona ninguna entonces reinicia el ciclo
+            continue  
 
-        p_cpu = elegir_pokemon_cpu(cpu)
+        p_cpu = elegir_pokemon_cpu(cpu)     #la CPU elige un pokemon al azar
 
-        print(f"\n{jugador.nombre} eligió: {p_jugador.nombre}")
-        print(f"CPU eligió: {p_cpu.nombre}")
 
-        # ⚔️ batalla
-        pantalla = PantallaBatalla(jugador, cpu, p_jugador, p_cpu)
+        #Batalla
+        pantalla = PantallaBatalla(jugador, cpu, p_jugador, p_cpu) #se crea y se inicia la pantalla de batalla (la ventana de Tkinter donde ocurre el combate).
         pantalla.iniciar()
 
-        ganador = pantalla.ganador
+        ganador = pantalla.ganador      #cuando la batalla termina se obtiene el perdedor y el ganador
         perdedor = pantalla.perdedor
 
-        # 🔥 VALIDACIÓN CLAVE (evita bug del contador)
-        if ganador is None or perdedor is None:
+
+        if ganador is None or perdedor is None:     #si por un motivo cualquiera no hay ganador, se reinicia el ciclo
             continue
 
-        # 🔁 transferir Pokémon
+        #transferir pokemon
         if ganador == p_jugador:
             transferir_pokemon(jugador, cpu, perdedor)
         else:
             transferir_pokemon(cpu, jugador, perdedor)
 
-    # 🏁 fin del juego
-    if jugador.tiene_pokemon_vivos():
-        print("\n GANASTE")
-    else:
-        print("\n PERDISTE")
 
-    # 💾 guardar puntaje
-    agregar_puntaje(jugador.nombre, jugador.puntaje, jugador.avatar)
+    agregar_puntaje(jugador.nombre, jugador.puntaje, jugador.avatar)    #se guarda el puntaje
 
-    # 🏆 mostrar ranking
-    pantalla = PantallaPuntajes()
+    
+    pantalla = PantallaPuntajes()  #se inicia la pantalla de puntajes
     pantalla.iniciar()

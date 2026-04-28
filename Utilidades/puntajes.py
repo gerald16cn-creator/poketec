@@ -27,7 +27,7 @@ def agregar_puntaje(nombre, puntaje, avatar):
     # ordenar de mayor a menor
     puntajes.sort(key=lambda x: x["puntaje"], reverse=True)
 
-    # top 10
+    # primeros 10
     puntajes = puntajes[:10]
 
     guardar_puntajes(puntajes)
